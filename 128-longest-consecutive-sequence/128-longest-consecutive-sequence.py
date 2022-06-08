@@ -7,11 +7,10 @@ class Solution:
         max_cnt = 1
         for num in nums:
             cur_cnt = 1
-            j = num
-            if j-1 not in num_set:
-                while j+1 in num_set:
+            if num-1 not in num_set:
+                while num+1 in num_set:
                     cur_cnt += 1
-                    j += 1
+                    num += 1
             max_cnt = max(max_cnt, cur_cnt)
         return max_cnt
                 
