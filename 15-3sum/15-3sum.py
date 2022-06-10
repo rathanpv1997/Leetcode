@@ -10,11 +10,11 @@ class Solution:
             while j<k:
                 three_sum = nums[i]+nums[j]+nums[k]
                 if three_sum == 0:
-                    res.append([nums[i],nums[j],nums[k]]) if [nums[i],nums[j],nums[k]] not in res else res
+                    res.append([nums[i],nums[j],nums[k]])
                     j+=1
                     k-=1
                 if three_sum < 0:
                     j += 1
                 if three_sum > 0:
                     k -= 1
-        return res
+        return list(set(tuple(x) for x in res))
