@@ -1,13 +1,14 @@
-from sortedcontainers import SortedList
+# from sortedcontainers import SortedList
 
 class MedianFinder:
 
     def __init__(self):
-        self.nums = SortedList()
+        # self.nums = SortedList()
+        self.nums = []
         self.n = 0
 
     def addNum(self, num: int) -> None:
-        SortedList.add(self.nums,num)
+        bisect.insort(self.nums,num)
         self.n += 1
         # print(self.nums)
         
