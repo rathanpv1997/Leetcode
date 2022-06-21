@@ -4,10 +4,10 @@ class Solution:
         n = len(graph)
         
         def dfs(cur,i):
-            if i == n-1 and cur[-1] != n-1:
-                return
             if cur[-1] == n-1:
                 res.append(cur[:])
+                return
+            if i == n-1:
                 return
             for j in range(len(graph[i])):
                 # print(graph[i][j])
