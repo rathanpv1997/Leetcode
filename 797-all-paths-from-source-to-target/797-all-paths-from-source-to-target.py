@@ -8,7 +8,7 @@ class Solution:
             #     res.append(cur[:])
             #     return
             if i == n-1:
-                res.append(cur[:])
+                res.append(cur)
                 return
             for j in graph[i]:
                 dfs(cur + [j], j)
