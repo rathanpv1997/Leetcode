@@ -2,17 +2,14 @@ class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
         res = []
         n = len(s)
-        visited = set()
+        # visited = set()
         
-        def dfs(i,path):
+        def dfs(i,sub):
             if i == n:
-                if path not in visited:
-                    res.append(path[:])
-                    visited.add(path[:])
-                    return
-                else:
-                    return
-            dfs(i+1,path+s[i].lower())
-            dfs(i+1,path+s[i].upper())
+                res.append(sub[:])
+            else:
+                if s[i].isalpha():
+                    dfs(i+1,sub + s[i].swapcase())
+                dfs(i+1,sub + s[i])
         dfs(0,"")
         return res
