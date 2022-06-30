@@ -1,24 +1,20 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return [[]]
         res = []
-        cur = []
-        d = {}
+        n = len(nums)
         nums.sort()
         
-        def dfs(i):
-            if i >= len(nums):
-                if tuple(cur.copy()) not in d.keys():
-                    res.append(cur.copy())
-                    d[(tuple(cur.copy()))] = 1
+        def dfs(i,path):
+            if i == n:
+                res.append(path[:])
                 return
             
-            cur.append(nums[i])
-            dfs(i+1)
-            cur.pop()
-            # while i+1<len(nums) and nums[i] == nums[i+1]:
-            #     i += 1
-            dfs(i+1)
-        
-        dfs(0)
-        return list(res)
+            dfs(i+1,path+[nums[i]])
+            while i+1<n and nums[i] == nums[i+1]:
+                i = i + 1
+            dfs(i+1,path)
+        dfs(0,[])
+        return res
         
